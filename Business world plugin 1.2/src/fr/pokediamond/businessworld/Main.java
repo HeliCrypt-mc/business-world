@@ -5,23 +5,23 @@ import fr.pokediamond.businessworld.commands.CommandTest;
 import fr.pokediamond.businessworld.commands.GameCommand;
 
 public class Main extends JavaPlugin {
-	
-	@Override
-	public void onEnable() {
-		System.out.println("Le plugin BusinessWorld vient de s'allumer");
-		getCommand("test").setExecutor(new CommandTest());
-		getCommand("alert").setExecutor(new CommandTest());
-		
-		getCommand("mine").setExecutor(new GameCommand());
-		getCommand("village").setExecutor(new GameCommand());
-		getCommand("moneygivechrono").setExecutor(new GameCommand());
-		
-		
-		
-	}
+    
+    @Override
+    public void onEnable() {
+        getLogger().info("Le plugin BusinessWorld vient de s'allumer");
+        final CommandTest cmdTest = new CommandTest();
+        getCommand("test").setExecutor(cmdTest);
+        getCommand("alert").setExecutor(cmdTest);
+        
 
-	@Override
-	public void onDisable() {
-		System.out.println("Le plugin BusinessWorld vient de s'eteindre");
-	}
+        final GameCommand cmdGame = new GameCommand();
+        getCommand("mine").setExecutor(cmdGame);
+        getCommand("village").setExecutor(cmdGame);
+        getCommand("moneygivechrono").setExecutor(cmdGame);
+    }
+
+    @Override
+    public void onDisable() {
+        getLogger().info("Le plugin BusinessWorld vient de s'eteindre");
+    }
 }
